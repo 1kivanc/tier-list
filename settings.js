@@ -18,6 +18,7 @@ for (let i = 0; i < colors.length; i++) {
 
 settingsBtn = document.querySelectorAll(".settingsBtn")
 textArea = document.getElementById("labeltext");
+
 settingsBtn.forEach(function(e){
     e.addEventListener("click",function(){
         document.getElementById("showSettingsPanel").style.display="flex";
@@ -37,8 +38,21 @@ settingsBtn.forEach(function(e){
                 closepanel = b.target;
                 document.getElementById("showSettingsPanel").style.display="none";
             }
-           
-           
+            else if(b.target.id=="deleteBtn"){
+                appendedField.classList.add("remove")
+
+                setTimeout(function() {
+                    appendedField.addEventListener('transitionend', function() {
+                        appendedField.remove();
+
+                    })
+
+                }, 300)
+
+                document.getElementById('showSettingsPanel').style.display = 'none';
+
+            }
+            
                   
             for(let i = 0; i< chooseColor.children.length; i++){
                 

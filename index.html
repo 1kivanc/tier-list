@@ -16,7 +16,7 @@
 
     <table class="tierList" id="tiertable">
     <h1>Tier List</h1>
-        <tbody style="width: 100%;">
+        <tbody style="width: 100%;" id="tableBody">
             <tr class="draggable"  draggable="true"> 
                 <td> 
                     <div class="row" style="width: 100%; height: 100px;">
@@ -133,15 +133,13 @@
         <textarea name="labeltext" id="labeltext" cols="60" rows="3"></textarea>
     </div>
    <div class="buttons">
-        <button class="btn">Delete Row</button>
+        <button class="btn" id="deleteBtn">Delete Row</button>
         <button class="btn">Clear Row Images</button>
-        <button class="btn">Add a Row Above</button>
+        <button class="btn" >Add a Row Above</button>
         <button class="btn">Add a Row Below</button>
    </div>
     <span class="closePanel" id="closePanel">X</span>
 </div>
-
-    
 
     
     <script src="rows.js"></script> 
