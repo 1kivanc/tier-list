@@ -35,3 +35,37 @@ function createRow(){
 }
 
 createRow();
+
+onClickMove();
+
+function onClickMove(){
+    var moveUpBtn = [...document.getElementsByClassName("moveUpBtn")]
+    var moveDownBtn = [...document.getElementsByClassName("moveDownBtn")]
+
+    moveUpBtn.forEach(e => {
+        e.addEventListener("click",ChangePositionUp)
+    })
+
+    moveDownBtn.forEach(e=> {
+        e.addEventListener("click",ChangePositionDown)
+    })
+
+}
+
+function ChangePositionUp(){
+    currentElement = this.parentElement.parentElement;
+    previousElement = currentElement.previousElementSibling;
+    if(previousElement != null){
+        tableBody.insertBefore(currentElement,previousElement);
+    }
+
+}
+
+function ChangePositionDown(){
+    currentElement = this.parentElement.parentElement;
+    nextElement = currentElement.nextElementSibling;
+    if(nextElement != null){
+        tableBody.insertBefore(nextElement,currentElement);
+    }
+}
+

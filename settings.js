@@ -13,14 +13,21 @@ for (let i = 0; i < showColors.length; i++) {
     span.style.backgroundColor = showColors[i];
   
     chooseColor.appendChild(span);
-  }
+}
+
+
+
   
 
 
 var selectedColor;
    
 settingsBtn = [...document.getElementsByClassName("settingsBtn")]
-textArea = document.getElementById("labeltext");
+moveUpBtn = [...document.getElementsByClassName("moveUpBtn")]
+moveDownBtn = [...document.getElementsByClassName("moveDownBtn")]
+tableBody =  document.querySelector("#tableBody")
+textArea = document.getElementById("labeltext")
+addRowAbove = document.getElementById("addRowAbove");
 
 settingsBtn.forEach(function(e){
     e.addEventListener("click",function(){
@@ -36,8 +43,7 @@ settingsBtn.forEach(function(e){
             row.firstElementChild.innerHTML = textArea.value;
         })
         
-       
-      
+    
         document.getElementById("showSettingsPanel").addEventListener("click",function(b){
             if(b.target.classList[0]=="closePanel"){
                 closepanel = b.target;
@@ -45,20 +51,44 @@ settingsBtn.forEach(function(e){
             }
             else if(b.target.id=="deleteBtn"){
                 appendedField.classList.add("remove")
-
+                tableBody.deleteRow(row.rowIndex);
                 setTimeout(function() {
                     appendedField.addEventListener('transitionend', function() {
                         appendedField.remove();
 
                     })
 
-                }, 300)
-
+                }, 500)
+               
                 document.getElementById('showSettingsPanel').style.display = 'none';
 
-            }
-           
+            }else if(b.target.id=="addRowAbove"){
+                
+
+                tableBody.innerHTML += `
+                <tr class="draggable"  draggable="true" > 
+                <td> 
+                    <div class="row" >
+                        <div style="background-color:${selectedColor};" class="label">New</div>
+                    </div>
+                 </td>
+                
+               
+                 <td>
+                    <button  class='settingsBtn'><i class="fa fa-gear" aria-hidden="true"></i>  </button>
+        
+                </td>
                   
+                <td>
+                    <button class='moveUpBtn'> <i class="fa fa-chevron-up" aria-hidden="true"></i></button> <br>
+                    <button class='moveDownBtn'><i class="fa fa-chevron-down" aria-hidden="true"></i></button>
+                </td>
+                    
+                </tr>
+                
+                `
+            }
+                    
 
         })
         for(let i = 0; i< chooseColor.children.length; i++){
@@ -85,6 +115,10 @@ settingsBtn.forEach(function(e){
         };
     })
 })
+
+
+
+
 
 
 
