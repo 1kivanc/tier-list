@@ -1,7 +1,10 @@
 let colors=["#FF7F7F","#FFBF7F","#FFDF7F","#FFFF7F","#BFFF7F","#7FFF7F","#7FFFFF","#7FBFFF","#7F7FFF","#FF7FFF","#BF7FBF","#3B3B3B","#858585","#F7F7F7"]
 let rowName = ["S","A","B","C","D","F"]
+const rows = document.querySelectorAll(".row");
 
-tableBody = document.getElementById("tableBody");
+
+
+tableBody = document.getElementById("tableBody")
 
 function createRow(){
     for(let i = 0 ; i<rowName.length ;i++){
@@ -10,10 +13,11 @@ function createRow(){
         
         tableBody.innerHTML += `
 
-        <tr class="draggable"  draggable="true" index=${i}> 
+        <tr class="draggable"  draggable="true" > 
         <td> 
             <div class="row" >
                 <div style="background-color:${colors[i]};" class="label">${rowName[i]}</div>
+                
             </div>
          </td>
         
@@ -35,6 +39,8 @@ function createRow(){
 }
 
 createRow();
+
+
 
 onClickMove();
 
